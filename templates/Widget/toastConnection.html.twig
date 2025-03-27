@@ -1,0 +1,35 @@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="connectToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="{{ asset('unkai_discord_picture.png') }}" class="rounded me-2" alt="Unkai profil picture" width="24" height="24">
+            <strong class="me-auto">Connexion</strong>
+            <small>Powered by Unkai</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <form action="index.php" method="post" class="list-group p-2">
+                <div class="input-group mb-2">
+                    <span class="input-group-text" id="username-addon">@</span>
+                    <div class="form-floating">
+                        <input type="text" id="floatingUsername" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                        <label for="floatingUsername" style="color: grey;">Username</label>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <div class="form-floating">
+                        <input type="password" id="floatingPassword" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                        <label for="floatingPassword" style="color: grey;">Password</label>
+                    </div>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                    <label class="form-check-label text-body-emphasis" for="autoSizingCheck">Remember me</label>
+                </div>
+                <ul class="list-group list-group-horizontal">
+                    <input type="submit" value="Sign in" class="list-group-item list-group-item-action">
+                    <input type="submit" value="Sign up" class="list-group-item list-group-item-action">
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>

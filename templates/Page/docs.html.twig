@@ -1,0 +1,120 @@
+{% extends 'Layout/defaultPage.html.twig' %}
+
+{% block theme %}{{ theme }}{% endblock theme %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary w-100" id="nav1000" style="max-height: 8vh;">
+        <div class="container-fluid">
+            <div class="mode-trigger">
+                <a id="modeTrigger" class="navbar-brand fw-bold" role="button" tabindex=0 aria-description="Secret button to change the color mode (light or dark)">UNKAI</a>
+            </div>
+            <form class="d-flex" role="search">
+                <input type="hidden" class="search-theme" name="theme" value="{{ theme }}">
+                <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active theme" aria-current="page" href="{{ path("index", {'theme': theme}) }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link theme" href="{{ path("serveurs", {'theme': theme}) }}">Serveurs</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" id="connectToastTrigger" class="nav-link">Connexion</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="navbar bg-body-tertiary w-100" id="nav999" style="max-height: 8vh;">
+        <div class="container-fluid">
+            <div class="mode-trigger">
+                <a id="modeTrigger2" class="navbar-brand fw-bold" role="button" tabindex=0 aria-description="Secret button to change the color mode (light or dark)">UNKAI</a>
+            </div>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">UNKAI</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form class="d-flex pb-4" role="search">
+                        <input type="hidden" class="search-theme" name="theme" value="{{ theme }}">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <ul class="navbar-nav" style="padding-left: 4%;">
+                        <li class="nav-item">
+                            <a class="nav-link active theme" aria-current="page" href="{{ path("index", {'theme': theme}) }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link theme" href="{{ path("serveurs", {'theme': theme}) }}">Serveurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" id="connectToastTrigger" class="nav-link">Connexion</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+{% endblock navbar %}
+
+{% block bodyContent %}
+    <div id="pdf-1" class="container-fluid w-100 bg-body pt-4 mx-0">
+        <h2 id="pdf-title-1" class="h2 text-body-emphasis text-center mb-3">- Personnages -</h2>
+
+        <div id="pdf-cards-1" class="container d-flex flex-row justify-content-center flex-wrap text-center">
+            {% for personnage in personnages %}
+                <div class="card mx-4 mb-5" style="min-width: 16rem; max-width: 17rem;">
+                    <a href="{{ personnage.link }}"><img src="{{ asset('docs/assets/' ~ personnage.image ~ '.jpg') }}" class="card-img-top" alt="Image de {{ personnage.nom }}"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-pdf="{{ asset('docs/pdf/' ~ personnage.pdf ~ '.pdf') }}" data-image="{{ asset('docs/assets/' ~ personnage.image ~ '.jpg') }}">
+                                {{ personnage.nom }}
+                            </a>
+                        </h5>                        
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <b>
+                                    Catégorie{% if personnage.categorie|length > 1 %}s{% endif %} -
+                                </b>
+                                <a class="text-reset search-link" href="{{ path('docs', {'search': personnage.categorie[0]}) }}">{{ personnage.categorie[0] }}</a>{% if personnage.categorie|length > 1 %},
+                                    <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-image="{{ asset('docs/assets/' ~ personnage.image ~ '.jpg') }}">...</a>
+                                {% endif %}
+                            </li>
+                            <li class="list-group-item">
+                                <b>
+                                    Auteur{% if personnage.auteur|length > 1 %}s{% endif %} -
+                                </b>
+                                <a class="text-reset search-link" href="{{ path('docs', {'search': personnage.auteur[0]}) }}">{{ personnage.auteur[0] }}</a>{% if personnage.auteur|length > 1 %},
+                                    <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-image="{{ asset('docs/assets/' ~ personnage.image ~ '.jpg') }}">...</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        <a href="{{ asset('docs/pdf/' ~ personnage.pdf ~ '.pdf') }}" class="btn btn-secondary mt-3" style="width: 95%;">Accès à la fiche</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="modal fade text-center" id="characterModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog card border-0" style="min-width: 16rem; max-width: 19rem;" role="document">
+            <img class="card-img-top" id="modalImage">
+            <div class="card-body modal-content border-0" id="modalBody">
+                <h5 class="card-title" id="modalCName"></h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="modalCategories"></li>
+                    <li class="list-group-item" id="modalAuthors"></li>
+                </ul>
+                <a class="btn btn-secondary mt-3" id="modalPDF">Accès à la fiche</a>
+            </div>
+        </div>
+    </div>
+
+    <script language="javascript" type="text/javascript" src="{{ asset('js/docs.js') }}" type="module"></script>
+{% endblock bodyContent %}
