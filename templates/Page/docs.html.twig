@@ -115,6 +115,8 @@
             </div>
         </div>
     </div>
-
-    {{ encore_entry_script_tags('docs') }}
 {% endblock bodyContent %}
+
+{% block jsImport %}
+    {{ encore_entry_script_tags('docs') }}
+{% endblock jsImport %}
