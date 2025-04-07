@@ -70,10 +70,10 @@
         <div id="pdf-cards-1" class="container d-flex flex-row justify-content-center flex-wrap text-center">
             {% for personnage in personnages %}
                 <div class="card mx-4 mb-5" style="min-width: 16rem; max-width: 17rem;">
-                    <a href="{{ personnage.link }}"><img src="{{ asset('docs/assets/' ~ personnage.image ~ '.jpg') }}" class="card-img-top" alt="Image de {{ personnage.nom }}"></a>
+                    <a href="{{ personnage.link }}"><img src="{{ asset('build/images/' ~ personnage.image ~ '.jpg') }}" class="card-img-top" alt="Image de {{ personnage.nom }}"></a>
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-pdf="{{ asset('docs/pdf/' ~ personnage.pdf ~ '.pdf') }}" data-image="{{ asset('docs/assets/' ~ personnage.image ~ '.jpg') }}">
+                            <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-pdf="{{ asset('build/docs/' ~ personnage.pdf ~ '.pdf') }}" data-image="{{ asset('build/images/' ~ personnage.image ~ '.jpg') }}">
                                 {{ personnage.nom }}
                             </a>
                         </h5>                        
@@ -83,7 +83,7 @@
                                     Catégorie{% if personnage.categorie|length > 1 %}s{% endif %} -
                                 </b>
                                 <a class="text-reset search-link" href="{{ path('docs', {'search': personnage.categorie[0]}) }}">{{ personnage.categorie[0] }}</a>{% if personnage.categorie|length > 1 %},
-                                    <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-image="{{ asset('docs/assets/' ~ personnage.image ~ '.jpg') }}">...</a>
+                                    <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-image="{{ asset('build/images/' ~ personnage.image ~ '.jpg') }}">...</a>
                                 {% endif %}
                             </li>
                             <li class="list-group-item">
@@ -91,11 +91,11 @@
                                     Auteur{% if personnage.auteur|length > 1 %}s{% endif %} -
                                 </b>
                                 <a class="text-reset search-link" href="{{ path('docs', {'search': personnage.auteur[0]}) }}">{{ personnage.auteur[0] }}</a>{% if personnage.auteur|length > 1 %},
-                                    <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-image="{{ asset('docs/assets/' ~ personnage.image ~ '.jpg') }}">...</a>
+                                    <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-image="{{ asset('build/images/' ~ personnage.image ~ '.jpg') }}">...</a>
                                 {% endif %}
                             </li>
                         </ul>
-                        <a href="{{ asset('docs/pdf/' ~ personnage.pdf ~ '.pdf') }}" class="btn btn-secondary mt-3" style="width: 95%;">Accès à la fiche</a>
+                        <a href="{{ asset('build/docs/' ~ personnage.pdf ~ '.pdf') }}" class="btn btn-secondary mt-3" style="width: 95%;">Accès à la fiche</a>
                     </div>
                 </div>
             {% endfor %}
@@ -116,5 +116,5 @@
         </div>
     </div>
 
-    <script language="javascript" type="text/javascript" src="{{ asset('js/docs.js') }}" type="module"></script>
+    <script language="javascript" type="text/javascript" src="/build/docs.js" type="module"></script>
 {% endblock bodyContent %}
