@@ -1,4 +1,4 @@
-import * as bootstrap from 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.esm.min.js';
+// import 'bootstrap';
 // import * as popperjs from 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js';
 
 const actMode = document.getElementById('actMode');
@@ -6,8 +6,8 @@ const theme_links = document.getElementsByClassName("theme");
 const theme_search = document.getElementsByClassName("search-theme");
 const modeTriggers = document.querySelectorAll('#modeTrigger, #modeTrigger2');
 
-const connectToast = document.getElementById('connectToast');
-const connectToastTrigger = document.getElementById('connectToastTrigger');
+// const connectToast = document.getElementById('connectToast');
+// const connectToastTrigger = document.getElementById('connectToastTrigger');
 
 modeTriggers.forEach(trigger => {
     trigger.addEventListener('click', () => {
@@ -28,11 +28,11 @@ modeTriggers.forEach(trigger => {
     });
 });
 
-if (connectToastTrigger) {
-    const connectToastBootstrap = bootstrap.Toast.getOrCreateInstance(connectToast);
+// if (connectToastTrigger) {
+//     const connectToastBootstrap = bootstrap.Toast.getOrCreateInstance(connectToast);
 
-    connectToastTrigger.addEventListener('click', () => {
-        connectToastBootstrap.show();
-        console.log(1);
-    })
-}
+//     connectToastTrigger.addEventListener('click', () => {
+//         connectToastBootstrap.show();
+//         console.log(1);
+//     })
+// }
