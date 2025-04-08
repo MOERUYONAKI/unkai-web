@@ -82,7 +82,7 @@
                                 <b>
                                     Catégorie{% if personnage.categorie|length > 1 %}s{% endif %} -
                                 </b>
-                                <a class="text-reset search-link" href="{{ path('docs', {'search': personnage.categorie[0]}) }}">{{ personnage.categorie[0] }}</a>{% if personnage.categorie|length > 1 %},
+                                <a class="text-reset search-link" id="themeSearch" href="{{ path('docs', {'search': personnage.categorie[0], 'theme': theme}) }}">{{ personnage.categorie[0] }}</a>{% if personnage.categorie|length > 1 %},
                                     <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-image="{{ asset('build/images/' ~ personnage.image ~ '.jpg') }}">...</a>
                                 {% endif %}
                             </li>
@@ -90,7 +90,7 @@
                                 <b>
                                     Auteur{% if personnage.auteur|length > 1 %}s{% endif %} -
                                 </b>
-                                <a class="text-reset search-link" href="{{ path('docs', {'search': personnage.auteur[0]}) }}">{{ personnage.auteur[0] }}</a>{% if personnage.auteur|length > 1 %},
+                                <a class="text-reset search-link" id="authorSearch" href="{{ path('docs', {'search': personnage.auteur[0], 'theme': theme}) }}">{{ personnage.auteur[0] }}</a>{% if personnage.auteur|length > 1 %},
                                     <a href="" class="open-modal text-reset text-decoration-none" data-bs-toggle="modal" data-bs-target="#characterModal" data-id="{{ loop.index - 1 }}" data-image="{{ asset('build/images/' ~ personnage.image ~ '.jpg') }}">...</a>
                                 {% endif %}
                             </li>
