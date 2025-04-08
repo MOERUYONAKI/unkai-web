@@ -26,8 +26,7 @@
     },
     "navbar": {
       "js": [
-        "/build/runtime.4a257db4.js",
-        "/build/navbar.792019b1.js"
+        "/build/runtime.4a257db4.js"
       ],
       "css": [
         "/build/navbar.8ab9acee.css"
