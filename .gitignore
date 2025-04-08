@@ -51,8 +51,13 @@
 # Embedded web-server pid file
 /.web-server-pid
 
+# Assets json
+assets/*
+assets/docs/*
+!assets/docs/
+!assets/docs/personnages.json
+
 node_modules/
-assets/
 package.json
 package-lock.json
 webpack.config.js
